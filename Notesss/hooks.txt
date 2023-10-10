@@ -1,0 +1,97 @@
+
+
+props
+appp .js
+import Helo from './Helo';
+import './App.css'
+function App() {
+  return (
+    <div class="App">
+  
+      <h1>List of products</h1>
+      <Helo name="Product 1" price="$100"/>
+      <Helo name="Product 2" price="$200"/>
+      <Helo name="Product 3" price="$300"/>
+      <Helo name="Product 4" price="$400"/>
+    </div> 
+    
+  );
+}
+
+export default App
+ counter usestate hook
+import { useState } from 'react';
+
+import './App.css'
+import Counter from './Counter';
+function App() {
+  
+ 
+  const[count,Setcount]=useState(0); //initial value inside ()
+  const increament=()=>{
+    Setcount(count+1);
+ 
+  };
+  const decreament=()=>{
+    Setcount(count-1);
+  };
+  
+  return (
+    <div className="App">
+  <h1>Counter</h1>
+  <p>COUNT IS:{count}</p>
+  <button onClick={increament}>+al</button>
+     <button onClick={decreament}>-</button>
+    <Counter/>
+    </div> 
+    
+  );
+}
+
+export default App
+
+
+
+
+
+
+appp.js jokes generator
+import useRandomJoke from './useRandomJoke';
+import { useState,useRef } from 'react';
+import './App.css'
+
+function App() {
+  const firstNameRef= useRef(null);
+  const lastNameRef= useRef(null);
+  
+  
+ const [firstName,setFirstName]=useState("joan");
+ const [lastName,setLastName]=useState("doe");
+ const joke = useRandomJoke(firstName, lastName);
+    const generatejoke=(e)=>{
+e.preventDefault();
+setFirstName(firstNameRef.current.value);
+setLastName(lastNameRef.current.value);
+
+    };
+
+ return(
+      <div>
+      <center>
+        <h1>joke Generator</h1>
+        <h2>{joke}</h2>
+        <form >
+          <input  placeholder='first name'ref={firstNameRef}  />
+        <input  placeholder='last name'ref={lastNameRef} />
+        <button className="bg-green-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" onClick={generatejoke}>Generate Jokes</button>
+        </form>
+        
+      
+      </center>
+      
+      </div> 
+    
+  );
+}
+
+export default App;

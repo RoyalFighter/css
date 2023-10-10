@@ -1,0 +1,52 @@
+.pa{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: sticky;
+
+  
+}
+.c1{
+   
+    color:pink;
+    font-size:1.5rem;
+background-color:black;
+height: 100px;
+width: 100px;
+
+
+}
+.c2{
+    color:pink;
+    font-size:1.5rem;
+background-color:rgb(154, 20, 180);
+height: 100px;
+width: 100px;
+
+}
+.c3{
+    color:pink;
+    font-size:1.5rem;
+background-color:rgb(211, 21, 21);
+height: 100px;
+width: 100px;
+
+}
+.c4{
+color:pink;
+font-size:1.5rem;
+background-color:rgb(7, 214, 117);
+height: 100px;
+width: 100px;
+
+
+}
+.img{
+    border-radius: 50%;
+    margin-bottom: 1rem;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border: 4px solid gray;
+  box-shadow: wheat;
+}

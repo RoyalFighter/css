@@ -1,0 +1,26 @@
+.parent{
+   display: flex;
+   margin-left: 100px;
+    width: 800px;
+    height: 800px;
+    background-color: #0e0101;
+   
+}
+.child1{
+    
+    width: 50%;
+    height: 50%;
+    background-color: #f00;
+}
+.child2{
+    margin-left: 80px;
+  float:right;
+    width: 50%;
+    height: 50%;
+    background-color: bisque;
+}
+.child2 img{ 
+
+    width: 50%;
+    height: 50%;
+}

@@ -1,0 +1,158 @@
+
+import CreateIcon from '@mui/icons-material/Create';
+import { Create, CreateNewFolderSharp, EventNote, SettingsVoice, Subscriptions } from '@mui/icons-material';
+import React from 'react'
+import './Feed.css';
+import ImageIcon from '@mui/icons-material/Image';
+import Post from './Post';
+import InputOption from './InputOption';
+import VideoLibraryIcon from '@mui/icons-material/VideoLibrary';
+import { useState } from 'react';
+import { useEffect } from 'react';
+import { db } from './firebase';
+
+ function Feed() {
+   const [input,setInput] = useState('');
+   const [posts, setPosts] = useState([]);
+   useEffect(()=>{
+
+db.collection("posts").onSnapshot((snapshot)=>
+  setPosts(snapshot.docs.map((doc)=>({id:doc.id,
+    data:doc.data(),
+  }))
+  )
+);
+   },[]);
+   const sendPost = (e) => {
+     e.preventDefault();
+     
+db.collection('posts').add({
+  name: "John Doe",
+  description: "Lorem ipsum dolor sit amet, consectetur ",
+ message:input,
+  photoUrl: "https://images.unsplash.com/photo-1579546929518-9e396f3cc809?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80",
+  timestamp: firebase.firestore.FieldValue.serverTimestamp()
+}); 
+};
+  return (
+    <div className='feed'>
+    <div className='feed__inputContainer'>
+    <div className='feed__input'>
+  
+   <CreateIcon />
+    <form>
+        <input  value={input} onChange ={e=>setInput(e.target.value)} type="text"/>
+        <button onClicK={sendPost} type="submit">send</button>
+    </form>
+
+
+
+</div>
+
+<div className='feed__inputOptions'>
+
+<InputOption Icon={ImageIcon} title='Photo' color='#70B5F9'/>
+<InputOption Icon={VideoLibraryIcon} title='Videos' color='green'/>
+<InputOption Icon={EventNote} title='Event' color='skyblue'/>
+<InputOption Icon={SettingsVoice} title='Voice' color='purple'/>
+
+
+
+
+</div>
+</div>
+
+
+{/* //post */}
+{posts.map(({id ,data: {name,description,message,photoUrl }}) => (
+  <post
+  key={id}
+  name={name}
+  description={description}
+  message={message}
+  photoUrl={photoUrl}
+  />
+))}
+
+
+    </div>
+  );
+
+ }export default Feed;
+
+
+
+
+
+
+import { Add } from '@mui/icons-material'
+import React from 'react'
+import './style.css'
+import {useState} from 'react'
+
+function Todo() {
+    const[inputdata,setInputData]=useState(''); {/*inputdata is the state and setInputData is the function to change the state and store it*/}
+  const[items,setItems]=useState('[]'); //to push data in div where we created dummydata div
+    //add the items function  
+        const  addItem=()=>{
+         if (!inputdata){
+                alert('please enter some data');
+
+         }   
+         else{
+             setItems([...items,inputdata]);//new data with existing data
+          setInputData("");//clear the input data
+            }
+        };
+    
+  
+  return (
+    <>
+<div className="main-div">
+    <div className="child-div">
+        <figure>
+            <img src="https://raw.githubusercontent.com/thapatechnical/reactjsByThapaTechnical/fdfcb12eac37b74d060e344e977df5749a939200/public/images/todo.svg" alt="Avatar" className="avatar" />
+            <figcaption>Add Your List Here ✌</figcaption>
+        </figure>
+         <div className="addItems">
+            <input 
+            className='form-control' 
+             value={inputdata}type="text"
+            placeholder="Add Items ✌" 
+        onChange={(event)=>setInputData(event.target.value)}/>
+        
+        <i className="fa fa-plus add-btn" onClick={addItem}></i>
+        {/* inupt feild bata push(fetch) bhako data showing here */}
+        
+        
+        <div className="showItems">
+            {
+                items.map((curElem,index)=>{
+                    return( 
+                    <div className="eachItem" key={index}>
+                    {/* <h3>Mango</h3> */}
+                <h3>{curElem}</h3>     {/*curElem is element at preseent*/}
+                    <div className="todo-btn">
+                    <i className="far  fa-edit add-btn"></i>
+                    <i className=" far fa-trash-alt add-btn"></i>
+                   
+                </div>
+            </div>
+                        
+                    );
+                })}
+            
+           
+        </div>
+<div className="showItems">
+    <button className="btn effect04" data-sm-link-text="Remove All"><span>CHECK LIST</span></button></div>
+
+
+</div>
+    </div>
+</div>
+    </>
+  );
+};
+
+export default Todo;

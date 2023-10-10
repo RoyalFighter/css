@@ -1,0 +1,14 @@
+//writing normal function in javascript called compponent this is our master component
+import './App.css';
+import SubComponent from './components/subcomponent';
+// function App(){
+//     return (
+//     <div className="p"> 
+//         <h3>This is my first component</h3>
+//         <p>This is my first paragraph </p></div>
+//         ); return can pass only one component so using div to wrp more than i component
+//     COMPONENT MUST BE ONE CHILDREN CAn B MANY div is wrpper here h3 and p  is children of div
+// }
+
+
+ //here we are passing components 

@@ -1,0 +1,11 @@
+import firebase from 'firebase/compat/app';
+
+
+new Date(firebase.firestore.Timestamp.now().seconds*1000).toLocaleDateString()
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/auth';
+import 'firebase/compat/firestore';
+ wrap under provider bhna
+import { Provider } from 'react-redux';
+import { store } from './app/store';
+import { Provider } from 'react-redux';
